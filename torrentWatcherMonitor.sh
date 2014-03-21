@@ -20,8 +20,8 @@ if ping -c 1 192.168.1.2; then
     if echo $REMOTE_PROCESSES | grep -i torrent; then
  
       echo Argh\! Not on uncapped and torrents running\!
-      echo Might aswell try to kill...
-      ssh Graeme@192.168.1.2 "/cygdrive/c/torrentWatcher/pskill.exe utorrent"
+      echo Might aswell try to kill if no ignore file...
+      ssh Graeme@192.168.1.2 "cd /cygdrive/c/torrentWatcher; if [ ! -x ignore ]; then ./pskill.exe utorrent; fi"
       exit 1
 
     else
