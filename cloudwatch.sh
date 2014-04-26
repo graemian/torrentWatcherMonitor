@@ -12,5 +12,7 @@ else
 
 fi
 
+export AWS_CONFIG_FILE=/root/.aws/config
+
 set -x
 aws cloudwatch put-metric-data --metric-name TorrentWatcher --namespace Home --value $VALUE
