@@ -21,8 +21,18 @@ if ping -c 1 192.168.1.2; then
  
       echo Argh\! Not on uncapped and torrents running\!
       echo Might aswell try to kill if no ignore file...
-      ssh Graeme@192.168.1.2 "cd /cygdrive/c/torrentWatcher; if [ ! -x ignore ]; then ./pskill.exe utorrent; fi"
-      exit 1
+
+      if [ -x /opt/homenetworkmanager/torrentUncapped ]; then 
+
+        ssh Graeme@192.168.1.2 "/cygdrive/c/torrentWatcher/pskill.exe utorrent"
+        exit 1
+
+      else
+        
+        echo Torrent uncapped disabled, ignoring
+        exit 0
+
+      fi
 
     else
 
